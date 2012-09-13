@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+
+<head>
+
+<title></title>
+
+<style type="text/css">
+	.name {font-family: Gill Sans MT, sans-serif; font-size: 70px; font-weight: bold; color:white; text-shadow: 1px 2px 4px black; text-align: center; text-decoration: none; cursor:pointer; padding-top: 30px; padding-bottom: 30px; margin:auto;}
+	
+	.title { font-family: helvetica, calibri, sans-serif; font-size: 18px; color: green; text-shadow: 1px 1px 2px #0f2918; padding:0 20 0 10; width:180px;  }
+	
+	.content {font-family: helvetica, calibri, sans-serif; font-size: 15px; background-color: rgba(78,74,74,0.56); border-radius: 3px; padding:10px; }
+	
+	.content1 { font-family: helvetica, calibri, sans-serif; font-size: 15px; color: #b2ccd7; background-color: rgba(78,74,74,0.56); border-radius: 3px; padding:10px; text-shadow: 1px 1px 2px #0f2918;  }
+	
+	.details {color:orange; font-size: 20px; text-align: center; vertical-align: middle; padding-left:10px; }
+	
+	a {text-decoration: none; color: white; text-shadow: black 1px 1px 2px; cursor: pointer;}
+	
+	.background {background-image:url(skygrass.png); background-repeat: no-repeat; width:100%;  } 
+	
+	.project {font-family: Gill Sans MT, sans-serif; font-size: 40px; font-weight: bold; color:white; text-shadow: black 1px 2px 4px; text-align: center; padding:20px; }
+	
+	.highlight {background-color: rgba(33,31,31,0.8); border-radius: 8px;}
+		
+</style>
+
+<script type="text/javascript" src="jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $(".project").hover(
+    function () {
+      $(this).addClass("highlight");
+      //alert ("yep");
+    }, 
+    function () {
+      $(this).removeClass("highlight");
+      //alert("nope!");
+    }
+  );
+  
+  $(".project").click(
+  function () {
+  
+  $("#DIV_back").animate({height:'1190px'},500);
+   // $("#DIV_back").animate({scrollTop: $('#DIV_back').offsetTop()},1500);
+  //alert(this.innerHTML.toString());
+  //function (){ 
+  //$("TBL_Project1").slideDown(); 
+  //}
+  //function scrollP1(){
+$('html,body').animate({
+scrollTop: $("#ScrollP1").offset().top
+}, 1500);
+
+$('#TD_Project1').animate({
+	 top: '460px', left:'38%'
+}, 1000);
+//}
+
+  
+  });
+  
+    
+  $("#SPAN_PlanDetails").click(
+  function () {
+	if (SPAN_HostingDetails.style.display == "none")
+	SPAN_HostingDetails.style.display = "block";
+	else
+	SPAN_HostingDetails.style.display = "none";
+	  });
+  
+  //.show();
+  
+}); // End of document.ready
+	
+</script>
+
+</head>
+
+<body>
+
+	<div id="DIV_back" class="background" style="height:720px; overflow:hidden; width:100%;">
+
+		<! Name>
+		<table style="width:100%; padding-bottom:20px; position:fixed; top:20px;">
+			<tr>
+				<td colspan="4" id="TD_Name" style="text-align:center; padding:30px;" ><a class="name" href="mailto:grant@grantelgin.com?subject=Sup%20Man">Grant Elgin</a>
+				</td>
+			</tr>
+		</table>
+		<! End of Name>
+
+
+		<! Projects list>
+		<table style="width:100%; padding-bottom:60px; padding-top:160px; position:relative; top:0px; left:0px;">
+			<tr>
+				<td class="project" id="TD_Project1" style="position:relative; top:0px; left:0px;">Project 1</td>
+				<td class="project">Project 2</td>
+				<td class="project">Project 3</td>
+				<td class="project">Project 4</td>
+	
+			</tr>	
+		</table>
+		<! End of Projects list>
+		
+
+		<! Bio >
+		<table id="TBL_Project1" style="width:80%; padding-right:50px; padding-top:450px;">
+			<tr>
+				<td class="title" id="TD_Bio">About Me</td>
+				<td class="content1" id="TD_AboutMeContent" >I started working for a start up about a year ago. Our goal is to make insurance fun! Before that, I owned a construction company. We built warehouses, high school gyms, and other industrial buildings. Now I build websites.</td>
+			</tr>
+			<tr>
+				<td class="title" id="TD_Host">Host</td>
+				<td class="content" id="TD_HostContent"><a href="http://www.asmallorange.com">A Small Orange</a></td>	
+			</tr>
+			<tr>
+				<td class="title" id="TD_Plan">Hosting Plan</td>
+				<td class="content" id="TD_PlanContent"><a href="http://asmallorange.com/hosting/shared/">Shared Hosting - Tiny Plan</a>
+				<span class="details" id="SPAN_PlanDetails">&#9660;</span>
+				<span id="SPAN_HostingDetails" style="display:none;" class="content1">
+					</br>Hello!		
+				</span>
+				</td>
+			</tr>
+			<tr>
+				<td class="title" id="TD_CodeEditor">Code Editor</td>
+				<td class="content" id="TD_CodeEditorContent"><a href="http://panic.com/coda/">Coda 2</a></td>
+			</tr>
+			<tr>
+				<td class="title" id="TD_Git">GIT Repository</td>
+				<td class="content" id="TD_GitContent"><a href="#">Name of GIT repository</a></td> 
+			</tr>	
+		</table>
+		<! End of Bio>
+
+	</div>
+	<div id="ScrollP1">&nbsp;</div>
+
+</body>
+</html>
