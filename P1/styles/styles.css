@@ -1,0 +1,87 @@
+	.name {
+	font-family: "Gill Sans MT", sans-serif; 
+	font-size: 70px; 
+	font-weight: bold; 
+	color:white; 
+	text-shadow: 1px 2px 4px black; 
+	text-align: center; 
+	text-decoration: none; 
+	cursor:pointer; 
+	padding-top: 30px; 
+	padding-bottom: 30px; 
+	margin:auto;
+	}
+	
+	.title { 
+	font-family: helvetica, calibri, sans-serif; 
+	font-size: 18px; 
+	color: green; 
+	text-shadow: 1px 1px 2px #0f2918; 
+	padding:0px 20px 0px 10px; 
+	width:180px;  
+	}
+	
+	.content {
+	font-family: helvetica, calibri, sans-serif; 
+	font-size: 15px; 
+	background-color: rgba(78,74,74,0.56); 
+	border-radius: 3px; 
+	padding:10px; 
+	}
+	
+	.content1 { 
+	font-family: helvetica, calibri, sans-serif; 
+	font-size: 15px; 
+	color: #b2ccd7; 
+	background-color: rgba(78,74,74,0.56); 
+	border-radius: 3px; 
+	padding:10px; 
+	text-shadow: 1px 1px 2px #0f2918;  
+	}
+	
+	.details {
+	color:orange; 
+	font-size: 20px; 
+	text-align: center; 
+	vertical-align: middle; 
+	padding-left:10px; 
+	cursor: pointer; 
+	}
+	
+	a {
+	text-decoration: none;
+	color: white; 
+	text-shadow: black 1px 1px 2px; 
+	cursor: pointer;
+	}
+	
+	.background {
+	background-image:url(../images/SkyMountain2.png);
+	background-repeat: no-repeat; 
+	width:100%;  
+	} 
+	
+	.project {
+	font-family: "Gill Sans MT", sans-serif; 
+	font-size: 40px; 
+	font-weight: bold; 
+	color:white; 
+	text-shadow: black 1px 2px 4px; 
+	text-align: center; 
+	padding:20px; 
+	}
+	
+	.highlight {
+	background-color: rgba(33,31,31,0.8); 
+	border-radius: 8px;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

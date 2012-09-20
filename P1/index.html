@@ -3,71 +3,47 @@
 
 <html>
 
-<head>
+	<head>
 
-<title></title>
+		<title>Grant Elgin CSCI E-75</title>
 
-<style type="text/css">
-	.name {font-family: Gill Sans MT, sans-serif; font-size: 70px; font-weight: bold; color:white; text-shadow: 1px 2px 4px black; text-align: center; text-decoration: none; cursor:pointer; padding-top: 30px; padding-bottom: 30px; margin:auto;}
-	
-	.title { font-family: helvetica, calibri, sans-serif; font-size: 18px; color: green; text-shadow: 1px 1px 2px #0f2918; padding:0 20 0 10; width:180px;  }
-	
-	.content {font-family: helvetica, calibri, sans-serif; font-size: 15px; background-color: rgba(78,74,74,0.56); border-radius: 3px; padding:10px; }
-	
-	.content1 { font-family: helvetica, calibri, sans-serif; font-size: 15px; color: #b2ccd7; background-color: rgba(78,74,74,0.56); border-radius: 3px; padding:10px; text-shadow: 1px 1px 2px #0f2918;  }
-	
-	.details {color:orange; font-size: 20px; text-align: center; vertical-align: middle; padding-left:10px; cursor: pointer; }
-	
-	a {text-decoration: none; color: white; text-shadow: black 1px 1px 2px; cursor: pointer;}
-	
-	.background {background-image:url(SkyMountain2.png); background-repeat: no-repeat; width:100%;  } 
-	
-	.project {font-family: Gill Sans MT, sans-serif; font-size: 40px; font-weight: bold; color:white; text-shadow: black 1px 2px 4px; text-align: center; padding:20px; }
-	
-	.highlight {background-color: rgba(33,31,31,0.8); border-radius: 8px;}
-		
-</style>
+		<link rel="stylesheet" type="text/css" href="styles/styles.css">
+		<script type="text/javascript" src="javaScripts/jquery.min.js"></script>
+		<meta name="description" content="CSCI E-75 DWA Project 1">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
 
-<script type="text/javascript" src="jquery.min.js"></script>
+		<script type="text/javascript">
 
-<script type="text/javascript">
-$(document).ready(function() {
-  $(".project").hover(
-    function () {
-      $(this).addClass("highlight");
-    }, 
-    function () {
-      $(this).removeClass("highlight");
-    }
-  );
+			$(document).ready(function() {
+			  $(".project").hover(
+			    function () {
+			      $(this).addClass("highlight");
+			    }, 
+			    function () {
+			      $(this).removeClass("highlight");
+			    }
+			  );
+			  
+			  $(".project").click(
+			  function () {
+				  $("#DIV_back").animate({height:'1390px'},500);
+			
+				  $('html,body').animate({
+				  scrollTop: $("#ScrollP1").offset().top
+				  }, 1500);
+			
+				  $('#TD_Project1').animate({
+				  top: '670px'
+				  }, 1000);
+			  
+			  });
   
-  $(".project").click(
-  function () {
-  
-  $("#DIV_back").animate({height:'1390px'},500);
-
-$('html,body').animate({
-scrollTop: $("#ScrollP1").offset().top
-}, 1500);
-
-$('#TD_Project1').animate({
-	 top: '670px'
-}, 1000);
-
-
-  
-  });
-  
-    
-  $("#SPAN_PlanDetails").click(
-  function () {
-	if (SPAN_HostingDetails.style.display == "none")
-	SPAN_HostingDetails.style.display = "block";
-	else
-	SPAN_HostingDetails.style.display = "none";
-	  });
-  
-  
+			  $("#SPAN_PlanDetails").click(function () {
+				if (SPAN_HostingDetails.style.display == "none")
+					SPAN_HostingDetails.style.display = "block";
+				else
+					SPAN_HostingDetails.style.display = "none";
+			  });
   
 }); // End of document.ready
 	
@@ -82,7 +58,8 @@ $('#TD_Project1').animate({
 		<! Name>
 		<table style="width:100%; padding-bottom:20px; position:fixed; top:20px;">
 			<tr>
-				<td colspan="4" id="TD_Name" style="text-align:center; padding:30px;" ><a class="name" href="mailto:grant@grantelgin.com?subject=Sup%20Man">Grant Elgin</a>
+				<td colspan="4" id="TD_Name" style="text-align:center; padding:30px;" >
+					<a class="name" href="mailto:grant@grantelgin.com?subject=Sup%20Man">Grant Elgin</a>
 				</td>
 			</tr>
 		</table>
