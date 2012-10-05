@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+
+	<head>
+
+		<title>Grant Elgin CSCI E-75</title>
+
+		<link rel="stylesheet" type="text/css" href="styles/styles.css">
+		<script type="text/javascript" src="javaScripts/jquery.min.js"></script>
+		<meta name="description" content="CSCI E-75 DWA Project 1">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+
+		<script type="text/javascript">
+		
+		var now = new Date();
+
+			$(document).ready(function() {
+			  $(".project").hover(
+			    function () {
+			      $(this).addClass("highlight");
+			    }, 
+			    function () {
+			      $(this).removeClass("highlight");
+			    }
+			  );
+			  
+			  jQuery.each(jQuery.browser, function(i, val) {
+      $("<p>" + i + " : <span>" + val + "</span></p>")
+                .appendTo( '#browser' );
+    });
+			  
+			  $(".project").click(
+			  function () {
+				  $("#DIV_back").animate({height:'1390px'},500);
+			
+				  $('html,body').animate({
+				  scrollTop: $("#ScrollP1").offset().top
+				  }, 1500);
+			
+				  $('#TD_Project1').animate({
+				  top: '670px'
+				  }, 1000);
+				  
+				  $('td').hover(
+				  function(){ 
+				  		$(this).addClass("highlight");
+				  	}, 
+				  function () {
+			      		$(this).removeClass("highlight"); });
+			      		
+			      $('td').click(
+			      function (e){
+			      		$('#pageData').fadeIn();
+			      		$('#time').append("<p>" + now + "</p>");
+			      		$('#itemData').append("<p>" + this.innerHTML + $(this).get(0).tagName + "</p>");		
+				      		
+			      		});
+			  
+			  });
+  
+			  $("#SPAN_PlanDetails").click(function () {
+				if (SPAN_HostingDetails.style.display == "none")
+					SPAN_HostingDetails.style.display = "block";
+				else
+					SPAN_HostingDetails.style.display = "none";
+			  });
+  
+}); // End of document.ready
+	
+</script>
+
+</head>
+
+<body>
+
+	<div id="DIV_back" class="background" style="height:720px; overflow:hidden; width:100%; padding-left:30px;">
+
+		<! Name>
+		<table style="width:100%; padding-bottom:20px; position:fixed; top:20px;">
+			<tr>
+				<td colspan="4" id="TD_Name" style="text-align:center; padding:30px;" >
+					<a class="name" href="mailto:grant@grantelgin.com?subject=Sup%20Man">Grant Elgin</a>
+				</td>
+			</tr>
+		</table>
+		<! End of Name>
+
+
+		<! Projects list>
+		<table style="padding-bottom:60px; padding-top:160px; position:relative; top:0px; left:50%; margin-left:-105px;">
+			<tr>
+				<td class="project" id="TD_Project1" style="position:relative; top:0px; left:0px; text-align:center;">Project 1</td>
+			</tr>	
+		</table>
+		<! End of Projects list>
+		
+
+		<! Bio >
+		<table id="TBL_Project1" style="width:80%; padding-right:50px; padding-top:650px;">
+			<tr>
+				<td class="title" id="TD_Bio">About Me</td>
+				<td class="content1" id="TD_AboutMeContent" >I started working for a start up about a year ago. Our goal is to make insurance fun! Before that, I owned a construction company. We built warehouses, high school gyms, and other industrial buildings. Now I build websites.</td>
+			</tr>
+			<tr>
+				<td class="title" id="TD_Host">Host</td>
+				<td class="content" id="TD_HostContent"><a href="http://www.asmallorange.com">A Small Orange</a></td>	
+			</tr>
+			<tr>
+				<td class="title" id="TD_Plan">Hosting Plan</td>
+				<td class="content" id="TD_PlanContent"><a href="http://asmallorange.com/hosting/shared/">Shared Hosting - Tiny Plan</a>
+				<span class="details" id="SPAN_PlanDetails">&#9660;</span>
+				<span id="SPAN_HostingDetails" style="display:none;" class="content1">
+				250 MB storage<br/>
+				5 GB bandwidth						
+				</span>
+				</td>
+			</tr>
+			<tr>
+				<td class="title" id="TD_CodeEditor">Code Editor</td>
+				<td class="content" id="TD_CodeEditorContent"><a href="http://panic.com/coda/">Coda 2</a></td>
+			</tr>
+			<tr>
+				<td class="title" id="TD_Git">GIT Repository</td>
+				<td class="content" id="TD_GitContent"><a href="https://github.com/grantelgin/dwa.git">https://github.com/grantelgin/dwa.git</a></td> 
+			</tr>	
+		</table>
+		<! End of Bio>
+
+	</div>
+	<div id="ScrollP1">&nbsp;</div>
+	<div id="pageData" class="content" style="position:fixed; top:35%; left:40%; display:none;">
+		<div style="float:left;">
+			<span id="browser"></span><br/>
+			<span id="time"></span>
+	
+		</div>
+		<div style="float:right;">
+			<span id="itemData"></span>
+		</div>
+	</div>
+
+</body>
+</html>
