@@ -1,7 +1,9 @@
 <?php
 
+// GME inherits all capabilities of base controller
 class index_controller extends base_controller {
 
+// GME magic method - always happens. first run parent contruct, 
 	public function __construct() {
 		parent::__construct();
 	} 

@@ -9,7 +9,24 @@
 		<script type="text/javascript" src="/path/to/scripts.js"></script>
 		<meta name="description" content="Grant Elgin, a former industrial building contractor from Cambridge, MA is still building, but he's building websites instead of warehouses. ">
 		<meta charset="utf-8">
-			
+	<script type="text/javascript" src="http://zor.livefyre.com/wjs/v3.0/javascripts/livefyre.js"></script>
+<script type="text/javascript">
+(function () {
+    var articleId = fyre.conv.load.makeArticleId(null);
+    fyre.conv.load({}, [{
+        el: 'livefyre-comments',
+        network: "livefyre.com",
+        siteId: "314846",
+        articleId: articleId,
+        signed: false,
+        collectionMeta: {
+            articleId: articleId,
+            url: fyre.conv.load.makeCollectionUrl(),
+        }
+    }], function() {});
+}());
+</script>
+		
 	</head>
 
 	<body>
@@ -42,26 +59,12 @@
 		</header>
 		
 		<div style="clear:both;"></div>
+<section>		
+		<!-- START: Livefyre Embed -->
+<div id="livefyre-comments" style="padding-top:300px;"></div>
+<!-- END: Livefyre Embed -->
 	
-				<section>
-		        <div id="disqus_thread" style="width:90%; padding-left:20px;padding-top:200px;"></div>
-        <script type="text/javascript">
-            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-            var disqus_shortname = 'nestwork'; // required: replace example with your forum shortname
-            var disqus_developer = 1; // developer mode is on
-
-            /* * * DON'T EDIT BELOW THIS LINE * * */
-            (function() {
-                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-        
-		</section>
-
-	</body>
+</section>		
+					</body>
 
 </html>
