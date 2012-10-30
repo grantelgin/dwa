@@ -16,7 +16,7 @@
 
 <body>	
 
-	<div id='menu'>
+	<div id='menu' class='menu'>
 	
 		<!-- Menu for users who are logged in -->
 		<? if($user): ?>
@@ -26,17 +26,16 @@
 			<a href='/posts/'>View posts</a>
 			<a href='/posts/add'>Add a new post</a>
 		
-		<!-- Menu options for users who are not logged in -->	
+		<!-- Menu options for users who are not logged in -->
 		<? else: ?>
 		
-			<a href='/users/signup'>Sign up</a>
-			<a href='/users/login'>Log in</a>
+			
 		
 		<? endif; ?>
 	
 	</div>
 	
-	<br>
+	
 
 	<?=$content;?> 
 

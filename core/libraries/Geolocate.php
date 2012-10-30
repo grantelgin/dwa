@@ -18,8 +18,8 @@ class Geolocate {
 			
 		# if we're on local inject an IP address
 		if (!IN_PRODUCTION)
-			 $ip = "76.109.14.196"; // Miami, FL
-			// $ip = "24.44.58.79";    # Connecticut
+			//$ip = "76.109.14.196"; // Miami, FL
+			 $ip = "24.44.58.79";    # Connecticut
 			// $ip = "78.86.225.25";   # Great Britain
 
 		# If we want to mimick being a foreign country we can create an IP cookie
@@ -35,7 +35,7 @@ class Geolocate {
 			$geo = self::geoplugin($ip);
 		
 		# Debug info
-		//echo '<!-- User Geolocation: '.print_r($geo, TRUE).' -->';
+		echo '<!-- User Geolocation: '.print_r($geo, TRUE).' -->';
 		
 		return $geo;
 		

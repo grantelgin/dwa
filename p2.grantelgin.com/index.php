@@ -23,7 +23,7 @@
 
 # Routing
     Router::$routes = array(
-    	'/' => '/index',     # default controller when "/" is requested
+    	'/' => '/users/login',     # default controller when "/" is requested
     	'/profile' => '/users/profile',
     );
     

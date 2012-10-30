@@ -11,7 +11,7 @@ class users_controller extends base_controller {
 	
 	public function index()
 	{
-		echo "Welcome to the user dept";
+		Router::redirect("/users/profile/");
 		//index will avoid 404 page if uesr doesn't specify a method
 	}
 	
@@ -20,6 +20,14 @@ class users_controller extends base_controller {
 		# Setup view
 		$this->template->content = View::instance("v_users_signup");
 		$this->template->title = "Signup";
+	
+		# Load CSS / JS
+		$client_files = Array(
+				"/css/global.css",
+				
+	            );
+	
+        $this->template->client_files = Utils::load_client_files($client_files);
 	
 		# Render template
 		echo $this->template;
@@ -38,13 +46,21 @@ class users_controller extends base_controller {
 		# insert this user in to the databse
 		$user_id = DB::instance(DB_NAME)->insert("users", $_POST);
 		
-		echo "Signed ";
+		Router::redirect("/users/profile/");
 	}	
 	
 	public function login()
 	{	
 		$this->template->content = View::instance("v_users_login");
 		$this->template->title = "Login";
+		
+		# Load CSS / JS
+		$client_files = Array(
+				"/css/global.css",
+				
+	            );
+	
+        $this->template->client_files = Utils::load_client_files($client_files);
 		
 		echo $this->template;
 	}
@@ -80,7 +96,7 @@ class users_controller extends base_controller {
 			 setcookie("token", $token, strtotime('+1 year'), '/');
 		
 			 # Send them to the main page - or whever you want them to go
-			 Router::redirect("/users/trade");
+			 Router::redirect("/users/profile");
 			 //echo "Signed in!";			
 		}
 	}
@@ -109,23 +125,44 @@ class users_controller extends base_controller {
 		# Setup view
 		$this->template->content = View::instance('v_users_profile');
 		$this->template->title = "Profile of ".$this->user->first_name;
+		
+		# Load CSS / JS
+		$client_files = Array(
+				"/css/global.css",
+				"/js/profile.js",
+	            );
+	
+        $this->template->client_files = Utils::load_client_files($client_files);
 			
 		# Build a query of this users posts
-		$q = "SELECT content 
-			FROM posts
+		$q = "SELECT * 
+			FROM posts JOIN users USING (user_id)
 			WHERE user_id = ".$this->user->user_id;
 			
 		$qname = "SELECT * FROM users JOIN trades USING (user_id) WHERE user_id = ".$this->user->user_id;	
+		
+		# Build a query of the users this user is following - we're only interested in their posts
+	$qfollowing = "SELECT * 
+		FROM users_users JOIN users USING (user_id)
+		WHERE user_id_followed = user_id";
+		
+		
 	
+			
+			
 		# Execute our query, storing the results in a variable $postContent
 		$postContent = DB::instance(DB_NAME)->select_rows($q);
 		$userman = DB::instance(DB_NAME)->select_rows($qname);
+		$usersFollowed = DB::instance(DB_NAME)->select_rows($qfollowing);
+		
 		
 		# Pass data to the view
 		$this->template->content->postContent = $postContent;
 		$this->template->content->userdog = $userman;
+		$this->template->content->followedUsers = $usersFollowed;
+		
 		#$this->template->content->user_name = $user_name;
-	print_r($userman);
+	#print_r($usersFollowed);
 
 		# Render view
 		echo $this->template;
@@ -146,10 +183,19 @@ class users_controller extends base_controller {
 		
 		
 		$_POST['user_id'] = $this->user->user_id;
-		print_r($_POST);
+		//print_r($_POST);
 		$trade = DB::instance(DB_NAME)->insert("trades", $_POST);
 		
+		Router::redirect("/users/profile/");
+		
 	}
+	
+	
+	public function p_locate(){
+		$location = geolocate::locate();
+		print_r($location);
+	}
+	
 	
 	
 } # end of users_controller class
