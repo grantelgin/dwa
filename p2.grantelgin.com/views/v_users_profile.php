@@ -7,19 +7,18 @@
 		</div>
 		
 		<div style="float:left; padding-left:10px; padding-top:0px;">
-	
-	<!--		<? foreach($userdog as $usah): ?>					 -->
-	<!--										 					 -->
-	<!--	<h2><?=$usah['first_name']?> <?=$usah['last_name']?><br> -->
-	<!--	<span class="trade"><?=$usah['trade']?></span>			 -->
-	<!--	</h2>								 					 -->
-	<!--										 					 -->
-	<!--										 					 -->
-	<!--	<? endforeach; ?>					 					 --> 
-	
-			<h2>Grant Elgin <span class="trade">Unicyclist</span></h2>
-			<span class="profileLocation">Boston, MA</span>
-			<div class="linkEdit" style="width:100px;"><a href="/users/profileEdit">Edit Profile</a></div>
+
+	<? foreach($userName as $user): ?>
+			<h2>
+				<?=$user['first_name']?> <?=$user['last_name']?> 
+				<span class="trade">
+					<? foreach($trades as $trade): ?>
+						<?=$trade['trade'];?>
+					<? endforeach; ?>
+				</span> 
+			</h2>
+	<? endforeach; ?>		
+			
 			
 		</div>
 	</div>
@@ -32,14 +31,14 @@
 		<? foreach($postContent as $post): ?>
 			<div class="post">
 				<?=$post['content']?><br>
-				<span class="postCaption">posted on: <?=date('D, M d, Y  g:i a', $post['created'])?></span>
+				<span class="postCaption">posted on: <?=date('D, M d, Y  g:i a', $post['posts_created'])?></span>
 			</div>
 		
 		<? endforeach; ?>
 	
 	</div>
 	
-	<div class="linkSignup" style="width:300px; margin:auto; text-align:center;"><a href="/users/p_locate">Mark current location as a pitch!</a></div>
+	<!-- <div class="linkSignup" style="width:300px; margin:auto; text-align:center;"><a href="/posts/p_locate">Mark current location as a pitch!</a></div> -->
 	
 </div>
 

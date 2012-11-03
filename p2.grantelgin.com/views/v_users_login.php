@@ -15,7 +15,7 @@
 	<div style="width:100%; height:40px; margin:0px;">
 	<div class="formDesc"><span style="padding-left:10px; padding-top:10px; vertical-align:middle; height:100%;">Busker login</span>
 	
-	<input type='submit'>
+	<input type="submit" value="Log in" name="Log in">
 	</div>
 	</div>
 	<div class="linkSignup" style="width:300px; margin:auto; text-align:center;"><a href="/users/signup">or<br>Signup here</a></div>
