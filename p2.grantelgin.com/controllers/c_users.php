@@ -4,15 +4,15 @@ class users_controller extends base_controller {
 	
 	public function __construct()
 	{
-		// this gets called every time -- put echo hello world in here - included every time
-		// parent construct is the construct method from base_controller -- the extended class.
+		# this gets called every time -- put echo hello world in here - included every time
+		# parent construct is the construct method from base_controller -- the extended class.
 		parent::__construct();
 	}
 	
 	public function index()
 	{
 		Router::redirect("/users/profile/");
-		//index will avoid 404 page if uesr doesn't specify a method
+		#index will avoid 404 page if uesr doesn't specify a method
 	}
 	
 	public function signup()
@@ -24,7 +24,6 @@ class users_controller extends base_controller {
 		# Load CSS / JS
 		$client_files = Array(
 				"/css/global.css",
-				
 	            );
 	
         $this->template->client_files = Utils::load_client_files($client_files);
@@ -35,25 +34,25 @@ class users_controller extends base_controller {
 	
 	public function p_signup ()
 	{
-		print_r($_POST);
-		
+		# Prepare the fields to be inserted in to the correct tables
 		# Encrypt the password
 		$_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
-		$_POST['created'] = Time::now();
+		$_POST['created']  = Time::now();
 		$_POST['modified'] = Time::now();
-		$_POST['token'] = sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string());
+		$_POST['token']    = sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string());
 		
-		$userPost['password'] = $_POST['password'];
-		$userPost['created'] = $_POST['created'];
-		$userPost['modified'] = $_POST['modified'];
-		$userPost['token'] = $_POST['token']; 
-		$userPost['email'] = $_POST['email']; 
+		$userPost['password']   = $_POST['password'];
+		$userPost['created']    = $_POST['created'];
+		$userPost['modified']   = $_POST['modified'];
+		$userPost['token']      = $_POST['token']; 
+		$userPost['email']      = $_POST['email']; 
 		$userPost['first_name'] = $_POST['first_name']; 
-		$userPost['last_name'] = $_POST['last_name']; 
+		$userPost['last_name']  = $_POST['last_name']; 
 		
 		# insert this user in to the databse
 		$user_id = DB::instance(DB_NAME)->insert("users", $userPost);
 		
+		#Insert data in to the trades table after the users table item has been created
 		$art['trade'] = $_POST['art'];
 		$art['user_id'] = $user_id;
 		$art = DB::instance(DB_NAME)->insert("trades", $art);
@@ -65,14 +64,6 @@ class users_controller extends base_controller {
 	{	
 		$this->template->content = View::instance("v_users_login");
 		$this->template->title = "Login";
-		
-		## Load CSS / JS
-		#$client_files = Array(
-		#		"/css/global.css",
-		#		
-	    #        );
-		#
-        #$this->template->client_files = Utils::load_client_files($client_files);
 		
 		echo $this->template;
 	}
@@ -108,8 +99,7 @@ class users_controller extends base_controller {
 			 setcookie("token", $token, strtotime('+1 year'), '/');
 		
 			 # Send them to the main page - or whever you want them to go
-			 Router::redirect("/posts");
-			 //echo "Signed in!";			
+			 Router::redirect("/posts");			
 		}
 	}
 
@@ -134,6 +124,7 @@ class users_controller extends base_controller {
 	
 	public function profile($user_id)
 	{
+		# if a user_id is not provided, send the user to their own profile.
 		if ($user_id == '')
 		{
 			$user_id = $this->user->user_id;
@@ -160,6 +151,7 @@ class users_controller extends base_controller {
 		# Pass data to the view
 		$this->template->content->postContent = $postContent;
 		
+		# repeat the Build, Execute, Pass sequence to create a 2nd object accessible from the view.
 		$q = "SELECT first_name, last_name 
 		FROM users WHERE user_id = ".$user_id;
 		
@@ -167,45 +159,19 @@ class users_controller extends base_controller {
 		
 		$this->template->content->userName = $userName;
 		
+		# repeat the Build, Execute, Pass sequence to create a 3rd object accessible from the view. This will be for the user's trade. 
 		$q = "SELECT trade FROM trades WHERE user_id = ".$user_id;
 		
 		$trades = DB::instance(DB_NAME)->select_rows($q); 
 		
 		$this->template->content->trades = $trades;
 		
-		
-		
-		#$this->template->content->user_name = $user_name;
-		#print_r($userman);
+		#this is a better layout than print_r(data) for debugging
 		#echo Debug::dump($userName, "user_id");
 		# Render view
-		echo $this->template;
-			
+		echo $this->template;	
 	}
 	
-	public function trade(){
-		# Setup view
-		$this->template->content = View::instance('v_users_trade');
-		$this->template->title = "Trades for ".$this->user->first_name;
-		
-		echo $this->template;
-		
-		
-	}
-	
-	public function p_trade(){
-		
-		
-		$_POST['user_id'] = $this->user->user_id;
-		//print_r($_POST);
-		$trade = DB::instance(DB_NAME)->insert("trades", $_POST);
-		
-		Router::redirect("/users/profile/");
-		
-	}
-	
-	
-		
-	
+
 	
 } # end of users_controller class

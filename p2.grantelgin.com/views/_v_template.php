@@ -40,10 +40,12 @@
 		<? endif; ?>
 	
 	</div>
+	
 	<div style="margin-top:30px;">
 	
-
 	<?=$content;?> 
+	
 	</div>
+	
 </body>
 </html>

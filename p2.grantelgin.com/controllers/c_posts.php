@@ -7,9 +7,9 @@ class posts_controller extends base_controller {
 		parent::__construct();
 		
 		# Make sure user is logged in if they want to use anything in this controller
-		    #if (!$this->user) {
-		    #	die("Members only. <a href='/users/login/'>Please login</a>"); 
-		    #}	
+		    if (!$this->user) {
+		    	die("Members only. <a href='/users/login/'>Please login</a>"); 
+		    }	
 	}
 	
 	public function add() 
@@ -30,21 +30,21 @@ class posts_controller extends base_controller {
         $location = geolocate::locate();   
 	  	$now = Time::now();
 	  	
-	  	   $this->template->content->location = $location;
-	  	   $this->template->content->now = $now;
+	  	$this->template->content->location = $location;
+	  	$this->template->content->now = $now;
 	  	   
-		
 		#Render template
 		echo $this->template;
 	}
 	
 	public function p_add() 
 	{	
-		
+		# if user did not change location shown in placeholder, use ip location
 		$location = geolocate::locate();
 		
+		# prepare fields to be inserted in to correct table
 		$location['ip'] = sha1(TOKEN_SALT.$location['ip'].Utils::generate_random_string());
-	  	   $location['user_id'] = $this->user->user_id;
+	  	   $location['user_id']   = $this->user->user_id;
 	  	   $location['pitchName'] = $_POST['pitchName'];
 	  	   if ($_POST['pitchLocation'] == '')
 	  	   {
@@ -66,18 +66,18 @@ class posts_controller extends base_controller {
 	  	   
 	  	   $location['pedTraffic'] = $_POST['pedTraffic'];
 	  	   $location['visibility'] = $_POST['visibility'];
-	  	   $location['bgNoise'] = $_POST['bgNoise'];
+	  	   $location['bgNoise']    = $_POST['bgNoise'];
 	  	   $location['generosity'] = $_POST['generosity'];
 	  	   
 		
-		$comment['created'] = Time::now();
+		$comment['created']  = Time::now();
 		$comment['modified'] = Time::now();
-		$comment['user_id'] = $this->user->user_id;
-		$comment['content'] = $_POST['content'];
+		$comment['user_id']  = $this->user->user_id;
+		$comment['content']  = $_POST['content'];
 		
-	  	  # insert this post and location to database 
-	  	  DB::instance(DB_NAME)->insert("locations", $location);
-	  	  DB::instance(DB_NAME)->insert('posts', $comment);
+	  	# insert this post and location in to tables 
+	  	DB::instance(DB_NAME)->insert("locations", $location);
+	  	DB::instance(DB_NAME)->insert('posts', $comment);
 		
 		echo "Your post has been added. <a href='/posts/add'>Add another post.</a>";
 	}
@@ -96,7 +96,7 @@ class posts_controller extends base_controller {
 	
         $this->template->client_files = Utils::load_client_files($client_files);
 	
-		# Build a query of the users this user is following - we're only interested in their posts
+		# Build a query of the users this user is following
 		$q = "SELECT * 
 			FROM users_users
 			WHERE user_id = ".$this->user->user_id;
@@ -117,7 +117,7 @@ class posts_controller extends base_controller {
 	
 		# Connections string example: 10,7,8 (where the numbers are the user_ids of who this user is following)
 
-		# Now, lets build our query to grab the posts
+		# Now, lets build our query to grab the posts and trades. with multiple 'created' fields, rename the one we will use p.created AS p_created 
 		$q = "SELECT *, p.created AS p_created  
 			FROM posts p 
 			LEFT JOIN users u ON p.user_id = u.user_id
@@ -127,12 +127,10 @@ class posts_controller extends base_controller {
 		# Run our query, store the results in the variable $posts
 		$posts = DB::instance(DB_NAME)->select_rows($q);
 		
-			
-		
 		# Pass data to the view
 		$this->template->content->posts = $posts;
 		
-		
+		#This is a cleaner debug view than print_r(obj)
 		#echo Debug::dump($posts, "user_id");
 		
 		# Render view
@@ -155,7 +153,8 @@ class posts_controller extends base_controller {
 		
 		# Build our query to get all the users
 		$q = "SELECT *
-			FROM users";
+			FROM users u
+			LEFT JOIN trades t ON u.user_id = t.user_id";
 			
 		# Execute the query to get all the users. Store the result array in the variable $users
 		$users = DB::instance(DB_NAME)->select_rows($q);
@@ -170,16 +169,11 @@ class posts_controller extends base_controller {
 		# This will come in handy when we get to the view
 		# Store our results (an array) in the variable $connections
 		$connections = DB::instance(DB_NAME)->select_array($q, 'user_id_followed');
-		
-		#Build query to get user's trade
-		$q = "SELECT trade FROM trades WHERE user_id = ".$this->user->user_id;
-		
-		$trades = DB::instance(DB_NAME)->select_rows($q);
 				
 		# Pass data (users and connections) to the view
-		$this->template->content->users       = $users;
-		$this->template->content->connections = $connections;
-		$this->template->content->trades       = $trades;
+		$this->template->content->users        = $users;
+		$this->template->content->connections  = $connections;
+		
 	
 		# Render the view
 		echo $this->template;
@@ -211,16 +205,5 @@ class posts_controller extends base_controller {
 		Router::redirect("/posts/users");
 	}
 	
-	public function p_locate(){
-	  	   $location = geolocate::locate();
-	  	   #$location['ip'] = sha1(TOKEN_SALT.$location['ip'].Utils::generate_random_string());
-	  	   $location['user_id'] = $this->user->user_id;
-	  	   $location_id = DB::instance(DB_NAME)->insert("locations", $location);
-	  	   
-	  	   $this->template->content->location = $location;
-	  	   
-	   #Router::redirect("/posts/add");
-	}
-
 	
 }

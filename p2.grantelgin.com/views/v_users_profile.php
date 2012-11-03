@@ -2,10 +2,6 @@
 <div class="profileLeft">
 	<div class="userCardContainer" style="padding-top:0px;">
 		
-		<div class="picOuter" style="float:left;">
-			<div class="picBorder"><img src="../images/login1.jpg" alt="login1" width="80" height="80" /></div>
-		</div>
-		
 		<div style="float:left; padding-left:10px; padding-top:0px;">
 
 	<? foreach($userName as $user): ?>

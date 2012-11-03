@@ -15,16 +15,19 @@ form input[type=submit]:hover {background-color:#4246dc; cursor: pointer; }
 h2 { color:#0085ff; font-size: 18px; font-family: "helvetica neue", sans-serif; font-weight: bold; margin-bottom: 0px;  }
 h2 a {text-decoration: none; color:#0085ff;}
 
+p {color: black; font-family: "helvetica neue", sans-serif; font-size:15px;}
+
 
 
 /*****   Class styles   *****/
-.pitchInput {border:1px solid gray; font-size:18px; }
 
-.follow { padding: 3px 0 3px 16px; color: #fff; font-family: "helvetica neue", sans-serif; font-size: 16px; background-repeat: no-repeat; background-position: 0 50%; background-image: url(../images/add.png); background-color: #acfcac; border: 1px solid #b0b0b0; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; width:100px; }
+.follow { padding: 3px 0 3px 16px; margin-top:7px; color: #fff; font-family: "helvetica neue", sans-serif; font-size: 16px; background-repeat: no-repeat; background-position: 0 50%; background-image: url(../images/add.png); background-color: #67CAE2; border: 1px solid #67CAE2; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; width:100px; }
 .follow a {text-decoration: none; color:#fff;}
 
-.unfollow { padding: 3px 0 3px 16px; color: #fff; font-family: "helvetica neue", sans-serif; font-size: 16px; background-repeat: no-repeat; background-position: 0 50%; background-image: url(../images/remove.png); background-color: #909090; border: 1px solid #b0b0b0; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; width:100px; }
+.unfollow { padding: 3px 0 3px 16px; margin-top:7px; color: #fff; font-family: "helvetica neue", sans-serif; font-size: 16px; background-repeat: no-repeat; background-position: 0 50%; background-image: url(../images/remove.png); background-color: #FB6934; border: 1px solid #FB6934; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; width:100px; }
 .unfollow a {text-decoration: none; color:#fff;}
+
+.content {color: black; font-family: "helvetica neue", sans-serif; font-size:18px; padding:10px;}
 
 .description { float:left; background-color: white; font-family: "helvetica neue", sans-serif; font-size: 16px; padding:10px; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; border:1px solid #a6a6a6; -moz-box-shadow: 1px 2px 3px black; -webkit-box-shadow: 1px 2px 3px black; box-shadow: 1px 2px 3px black; }
 
@@ -54,6 +57,8 @@ h2 a {text-decoration: none; color:#0085ff;}
 
 .picBorder { border: 5px solid white; margin:0px; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
 
+.pitchInput {border:1px solid gray; font-size:18px; }
+
 .post { color: black; font-family: "helvetica neue", sans-serif; font-size:15px; border-bottom: 1px solid #b0b0b0; padding: 10px; }
 
 .postCaption { color: #a6a6a6; font-family: "helvetica neue", sans-serif; font-size:13px; }
@@ -66,7 +71,9 @@ h2 a {text-decoration: none; color:#0085ff;}
 
 .trade { color: #000000; font-family: "helvetica neue", sans-serif; font-size: 16px;   }
 
-.userCardContainer { background-color: #d1d1d1; border: 1px solid #b0b0b0; width: 500px; height: 120px; }
+.title {font-family: "helvetica neue", sans-serif; font-size: 18px; color:#black;}
+
+.userCardContainer { background-color: #e8e8e8; border: 1px solid #b0b0b0; height: 120px; }
 
 
 
