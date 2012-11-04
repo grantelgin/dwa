@@ -34,17 +34,7 @@
 	
 	</div>
 	
-	<!-- <div class="linkSignup" style="width:300px; margin:auto; text-align:center;"><a href="/posts/p_locate">Mark current location as a pitch!</a></div> -->
+
 	
 </div>
 
-<div class="profileRight">
-	<? foreach($followedUsers as $fu): ?>
-		<div class="post">
-			<?=$fu['first_name']?> <?=$fu['last_name']?>
-		</div>
-	
-	<? endforeach; ?>
-	
-	
-</div>
