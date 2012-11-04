@@ -22,7 +22,7 @@
 	
 	<div style="clear:both;"></div>
 	
-	<div><span class="post" style="padding-left:20px;">Your posts are listed here.</span><br>
+	<div><span class="post" style="padding-left:20px; margin-bottom:20px;">Your posts are listed here.</span><br>
 	
 		<? foreach($postContent as $post): ?>
 			<div class="post">
