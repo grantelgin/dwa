@@ -55,7 +55,12 @@ class users_controller extends base_controller {
 		#Insert data in to the trades table after the users table item has been created
 		$art['trade'] = $_POST['art'];
 		$art['user_id'] = $user_id;
-		$art = DB::instance(DB_NAME)->insert("trades", $art);
+		$trade = DB::instance(DB_NAME)->insert("trades", $art);
+		
+		$connection['user_id'] = $user_id;
+		$connection['user_id_followed'] = $user_id;
+		$connection['created'] = $_POST['created'];
+		$connection1 = DB::instance(DB_NAME)->insert("users_users", $connection);
 		
 		Router::redirect("/posts/users");
 	}	
