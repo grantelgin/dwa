@@ -32,7 +32,7 @@ A email designated to receive messages from the server. Examples:
 	define('SYSTEM_EMAIL', 'webmaster@grantelgin.com'); 
 
 # Default DB name for this app
-	define('DB_NAME', 'grantelgc_p2_grantelgin_com'); 
+	define('DB_NAME', 'grantelg_p2_grantelgin_com'); 
 
 # Timezone
 	define('TIMEZONE', 'America/New_York');
