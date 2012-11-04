@@ -27,7 +27,7 @@ class posts_controller extends base_controller {
         $this->template->client_files = Utils::load_client_files($client_files);
         
         #load defaults for placeholders
-        $location = geolocate::locate();   
+        $location = Geolocate::locate();   
 	  	$now = Time::now();
 	  	
 	  	$this->template->content->location = $location;
