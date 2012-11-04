@@ -40,7 +40,7 @@ class posts_controller extends base_controller {
 	public function p_add() 
 	{	
 		# if user did not change location shown in placeholder, use ip location
-		$location = geolocate::locate();
+		$location = Geolocate::locate();
 		
 		# prepare fields to be inserted in to correct table
 		$location['ip'] = sha1(TOKEN_SALT.$location['ip'].Utils::generate_random_string());
