@@ -1,0 +1,164 @@
+
+header {
+  	position:fixed;
+  	left:0;
+  	right:0;
+  	top:0;
+  	background:#f4f4f4;
+  	border-bottom:1px solid #e6e5e5;
+}
+
+header h1 {
+  	float:left;
+  	margin:0;
+  	padding:0;
+  	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+  	font-size:42px;
+  	font-weight:600;
+  	line-height:72px; 
+}
+
+header h1 a {
+  	color:#333333;
+  	line-height:125px;
+  	display:block;
+  	background:#f4f4f4;
+  	text-decoration: none;
+}
+
+header h1 a:hover {
+	color: #00c9e8;
+	text-shadow: 0px 1px 0px white;
+}
+
+header h1 a span {
+	padding-left:200px; 
+}
+
+header nav {
+  	float:right;
+  	height:28px;
+  	padding:48px;
+}
+
+header nav li {
+  	display:block;
+  	float:left;
+}
+
+header nav li a {
+  	display:block;
+  	position:relative;
+  	height:28px;
+  	width:32px;
+  	background:#d0d0d0;
+  	margin-left:50px;  
+}
+
+header nav li a:hover { 
+	background-color:#999999; 
+}
+
+header nav li a:hover span {
+	display: block;
+ }
+ 
+header nav li a span {
+  	position:absolute;
+  	display:none;
+  	background:#333333;
+  	color:#ffffff;
+  	padding:0;
+  	text-align:center;
+  	top:100%;
+  	margin-top:10px;
+  	left:-50%;
+  	margin-left:-9px;
+  	width:82px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height:40px;
+    font-size:12px;
+    text-shadow:none;
+}
+
+header nav li.link1 a { 
+	background-position:0 0; 
+	background-color:#00cbe9; 
+}
+
+header nav li.link2 a { 
+	background-position:-32px 0; 
+}
+
+header nav li.link3 a { 
+	background-position:-96px 0; 
+}
+
+header nav li.link4 a { 
+	background-position:-64px 0; 
+}
+
+.container {
+  	width:1140px;
+  	margin-left:auto;
+  	margin-right:auto;
+}
+
+.project1 {
+  	margin-left:auto;
+  	margin-right:auto;
+  	height: 765px;
+  	background-image: url(../images/SkyMountain2.png);	
+}
+
+h2 {
+	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 22px;
+	color: black;
+	opacity: .4;
+	text-shadow: 0px 1px 1px white;
+	padding-bottom: 30px; 
+	padding-left: 20px;
+	margin-right: 40px;
+}
+
+.desc {
+	display:block;
+	font-family: helvetica, calibri, sans-serif; 
+	font-size: 15px; 
+	background-color: rgba(78,74,74,0.56); 
+	border-radius: 3px; 
+	padding:20px;
+	margin-bottom: 20px; 
+	text-decoration: none;
+	text-shadow: 0px 1px 1px black;
+	color:white;
+}
+	
+.desc a { 
+	text-decoration: none;
+	color: #ffd000; 
+	text-shadow: black 1px 1px 2px; 
+	cursor: pointer;
+}
+	
+#left {
+	padding-top:150px;
+	width:250px;
+	float:left;		
+}
+			
+#right {
+	padding-top:150px;
+	width:700px;
+	float:left;		
+}
+
+p { font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	color: black;
+	width:1043px;
+  }
