@@ -122,7 +122,7 @@ class users_controller extends base_controller {
 		Router::redirect("/");
 	}
 	
-	public function profile($user_id)
+	public function profile($user_id = null)
 	{
 		# if a user_id is not provided, send the user to their own profile.
 		if ($user_id == '')
