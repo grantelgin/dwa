@@ -35,7 +35,7 @@ class Geolocate {
 			$geo = self::geoplugin($ip);
 		
 		# Debug info
-		echo '<!-- User Geolocation: '.print_r($geo, TRUE).' -->';
+		#echo '<!-- User Geolocation: '.print_r($geo, TRUE).' -->';
 		
 		return $geo;
 		
