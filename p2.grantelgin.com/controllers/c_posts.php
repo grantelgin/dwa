@@ -79,7 +79,8 @@ class posts_controller extends base_controller {
 	  	DB::instance(DB_NAME)->insert("locations", $location);
 	  	DB::instance(DB_NAME)->insert('posts', $comment);
 		
-		echo "Your post has been added. <a href='/posts/add'>Add another post.</a>";
+		Router::redirect("/posts/users");
+		#echo "Your post has been added. <a href='/posts/add'>Add another post.</a>";
 	}
 	
 	public function index() 
