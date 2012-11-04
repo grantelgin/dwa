@@ -57,7 +57,7 @@ class users_controller extends base_controller {
 		$art['user_id'] = $user_id;
 		$art = DB::instance(DB_NAME)->insert("trades", $art);
 		
-		Router::redirect("/users/profile");
+		Router::redirect("/posts/users");
 	}	
 	
 	public function login()
