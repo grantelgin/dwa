@@ -21,7 +21,7 @@ if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
   // Append divs to body and load tuner. 
   function initGetInTune() {
 	  var containerDiv = document.createElement('div');
-	  var div1 = '<div id="DIV_tuner"style="width:250px;height:160px;background-color:#dbecff;padding:10px;position:fixed;top:10px;right:10px;">';
+	  var div1 = '<div id="DIV_tuner"style="width:250px;height:160px;background-color:#dbecff;padding:10px;position:fixed;top:10px;right:10px; z-index:999;">';
 	  var div2 = '<div style="color:black;font-family:sans-serif;font-weight:bold;font-size:16px;float:left;">Get in tune!</div>';
 	  var div3 = '<div style="color:black;font-family:sans-serif;font-weight:bold;font-size:22px;float:right;"><a href="javascript:$(\'#DIV_tuner\').hide()">X</a></div><br><br>';
 	  var div4 = '<div style="color:black;font-family:sans-serif;font-weight:bold;font-size:16px;float:left;">Standard tuning</div><br>';
