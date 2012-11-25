@@ -1,0 +1,63 @@
+  <!DOCTYPE html>
+ 
+ <html>
+ 
+ <head>
+ 
+ 	<title>Audio</title>
+ 
+ 	<link rel="stylesheet" href="css/tuner.css" type="text/css">
+ 
+ 	<script type="text/javascript" src="js/jquery.min.js"></script>
+ 
+ 	<meta name="description" content="Get In Tune Guitar tuner bookmarklet. Tune up without leaving the current web page.">
+ 
+ </head>
+ 
+ 
+ <body>
+ 
+ <div id="DIV_tuner" style="width:300px; height: 200px; background-color: #dbecff; padding: 10px; position:fixed; top:0px; left:76%;">
+ 
+ 
+ <div id="E" class="string"><audio src="audio/E.mp3" id="Audio_E" loop="loop"></audio>E</div>
+ <div id="A" class="string"><audio src="audio/A.mp3" id="Audio_A" loop="loop"></audio>A</div>
+ <div id="D" class="string"><audio src="audio/D.mp3" id="Audio_D" loop="loop"></audio>D</div>
+ <div id="G" class="string"><audio src="audio/G.mp3" id="Audio_G" loop="loop"></audio>G</div>
+ <div id="B" class="string"><audio src="audio/B.mp3" id="Audio_B" loop="loop"></audio>B</div>
+ <div id="1" class="string"><audio src="audio/1stStringE.mp3" id="Audio_1" loop="loop"></audio>e</div>
+ 
+ <div style="clear:both;"></div>
+
+ 
+ 
+ <script type="text/javascript">
+	 $(".string").click (function () {
+	 thisString = $(this).attr("id");
+	 thisAudio = 'Audio_' + thisString;
+	 thisStringElem = document.getElementById(thisAudio);
+	 
+	 if (isPlaying(thisStringElem))
+	 {
+		 document.getElementById(thisAudio).pause();
+		 document.getElementById(thisAudio).currentTime = 0;
+	 }
+	 else
+	 {
+	 document.getElementById(thisAudio).play();
+	 }		 
+	 }); 	
+	
+	function isPlaying(thisStringElem) { return !thisStringElem.paused; } 	
+	 	
+ 	</script>
+ 	</div>
+
+ 
+ </body>
+ 
+ </html>
+ 
+ 
+ 
+ 
