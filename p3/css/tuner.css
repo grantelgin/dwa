@@ -1,1 +1,4 @@
 .string { width:30px; height:30px; border:1px solid #007cff; background-color: #06538b; color:white; font-family: sans-serif; font-weight:bold; font-size:20px; text-align: center; padding-top:10px; margin-top: 5px; margin-right:5px; float:left; cursor: pointer; }
+
+h1 { font-family: sans-serif; font-size: 24px; color:black; margin-bottom:0px; }
+p { font-family: sans-serif; font-size: 18px; color:black;}
