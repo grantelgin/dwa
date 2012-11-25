@@ -10,54 +10,48 @@
  
  	<script type="text/javascript" src="js/jquery.min.js"></script>
  
- 	<meta name="description" content="Get In Tune Guitar tuner bookmarklet. Tune up without leaving the current web page.">
+ 	<meta name="description" content="Get In Tune Guitar tuner bookmarklet. Tune up without leaving your current web page.">
  
  </head>
  
  
  <body>
  
- <div id="DIV_tuner" style="width:300px; height: 200px; background-color: #dbecff; padding: 10px; position:fixed; top:0px; left:76%;">
- 
- 
- <div id="E" class="string"><audio src="audio/E.mp3" id="Audio_E" loop="loop"></audio>E</div>
- <div id="A" class="string"><audio src="audio/A.mp3" id="Audio_A" loop="loop"></audio>A</div>
- <div id="D" class="string"><audio src="audio/D.mp3" id="Audio_D" loop="loop"></audio>D</div>
- <div id="G" class="string"><audio src="audio/G.mp3" id="Audio_G" loop="loop"></audio>G</div>
- <div id="B" class="string"><audio src="audio/B.mp3" id="Audio_B" loop="loop"></audio>B</div>
- <div id="1" class="string"><audio src="audio/1stStringE.mp3" id="Audio_1" loop="loop"></audio>e</div>
- 
- <div style="clear:both;"></div>
+ 	<div id="DIV_tuner" style="width:250px; height: 160px; background-color: #dbecff; padding: 10px; position:fixed; top:10px; right:10px;">
+ 	<div style="color: black; font-family: sans-serif; font-weight:bold; font-size:16px; float:left;">Get in tune!</div><div style="color: black; font-family: sans-serif; font-weight:bold; font-size:22px; float:right;"><a href="javascript:$('#DIV_tuner').hide()">X</a></div><br><br>
+ 	<div style="color: black; font-family: sans-serif; font-weight:bold; font-size:16px; float:left;">Standard tuning</div><br>
+	 	<div id="E" class="string"><audio src="audio/E.mp3" id="Audio_E" loop="loop"></audio>E</div>
+	 	<div id="A" class="string"><audio src="audio/A.mp3" id="Audio_A" loop="loop"></audio>A</div>
+	 	<div id="D" class="string"><audio src="audio/D.mp3" id="Audio_D" loop="loop"></audio>D</div>
+	 	<div id="G" class="string"><audio src="audio/G.mp3" id="Audio_G" loop="loop"></audio>G</div>
+	 	<div id="B" class="string"><audio src="audio/B.mp3" id="Audio_B" loop="loop"></audio>B</div>
+	 	<div id="1" class="string"><audio src="audio/1stStringE.mp3" id="Audio_1" loop="loop"></audio>e</div>
+	 	<div style="clear:both;"></div>
+	 	<div style="color: black; font-family: sans-serif; font-size:15px; float:left; padding-top:20px;">Click a note above to hear the tone.<br>Click it again to stop.</div>
 
- 
- 
- <script type="text/javascript">
-	 $(".string").click (function () {
-	 thisString = $(this).attr("id");
-	 thisAudio = 'Audio_' + thisString;
-	 thisStringElem = document.getElementById(thisAudio);
+	 	<script type="text/javascript">
+		 	$(".string").click (function () {
+			 	thisString = $(this).attr("id");
+			 	thisAudio = 'Audio_' + thisString;
+			 	thisStringElem = document.getElementById(thisAudio);
 	 
-	 if (isPlaying(thisStringElem))
-	 {
-		 document.getElementById(thisAudio).pause();
-		 document.getElementById(thisAudio).currentTime = 0;
-	 }
-	 else
-	 {
-	 document.getElementById(thisAudio).play();
-	 }		 
-	 }); 	
+			 	if (isPlaying(thisStringElem)) {
+				 	document.getElementById(thisAudio).pause();
+				 	document.getElementById(thisAudio).currentTime = 0;
+				}
+				else {
+					document.getElementById(thisAudio).play();
+				}		 
+			}); 	
 	
-	function isPlaying(thisStringElem) { return !thisStringElem.paused; } 	
+			function isPlaying(thisStringElem) { 
+				return !thisStringElem.paused; 
+			} 	
 	 	
- 	</script>
+		</script>
+ 	
  	</div>
 
- 
  </body>
  
  </html>
- 
- 
- 
- 
