@@ -21,7 +21,7 @@ if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
   // Append div to body and load tuner. 
   function initGetInTune() {
 	  var containerDiv = document.createElement('div');
-	  $(containerDiv).load('http://p3.grantelgin.com/tune.html', function (){ console.log(containerDiv.innerHTML); });
+	  $(containerDiv).load('http://www.grantelgin.com/dwa/p3/tune.html', function (){ console.log(containerDiv.innerHTML); });
 	  document.body.appendChild(containerDiv);
 	  
   }
