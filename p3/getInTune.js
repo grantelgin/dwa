@@ -20,6 +20,7 @@ if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
 	initGetInTune();
   }
  // try loading click event listener in the function called by bookmarklet (div7 not loaded below)
+ 
   $(".string").click (function () {
  	thisString = $(this).attr("id");
  	thisAudio = 'Audio_' + thisString;
