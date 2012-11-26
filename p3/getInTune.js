@@ -1,5 +1,5 @@
 (function(){
-console.log("page started loading");
+console.log(window.jQuery.fn.jquery);
 //check for jQuery v.1.6.3 or later. If not here, load it.
 var v = '1.6.3';
 
@@ -10,11 +10,13 @@ if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
 	script.onload = script.onreadystatechange = function(){
 		if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
 		done = true;
+		console.log(window.jQuery.fn.jquery);
 		initGetInTune();
 		}
 	};
 	document.getElementsByTagName("head")[0].appendChild(script);
 } else {
+console.log(window.jQuery.fn.jquery);
 	initGetInTune();
   }
   
