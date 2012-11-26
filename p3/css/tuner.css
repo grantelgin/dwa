@@ -2,3 +2,13 @@
 
 h1 { font-family: sans-serif; font-size: 24px; color:black; margin-bottom:0px; }
 p { font-family: sans-serif; font-size: 18px; color:black;}
+
+.tunerContainer { width:250px; height: 160px; background-color: #dbecff; padding: 10px; }
+
+.text16 {color: black; font-family: sans-serif; font-weight:bold; font-size:16px; }
+.desc { color: black; font-family: sans-serif; font-size:15px; padding-top:20px; }
+
+.left { float:left; }
+.right { float:right; }
+
+.closeLnk { color: black; font-family: sans-serif; font-weight:bold; font-size:22px; float:right; }

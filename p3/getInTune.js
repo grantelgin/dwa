@@ -1,6 +1,6 @@
 (function(){
-console.log(window.jQuery.fn.jquery);
-//check for jQuery v.1.6.3 or later. If not here, load it.
+
+//check for jQuery v.1.6.3 or later. If not here, load v1.8.3.
 var v = '1.6.3';
 
 if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
@@ -16,21 +16,28 @@ if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
 	};
 	document.getElementsByTagName("head")[0].appendChild(script);
 } else {
-console.log(window.jQuery.fn.jquery);
+	console.log(window.jQuery.fn.jquery);
 	initGetInTune();
   }
-  
-  thisString = $(this).attr("id");
-			 	thisAudio = 'Audio_' + thisString;
-			 	thisStringElem = document.getElementById(thisAudio);
-	 
-			 	if (isPlaying(thisStringElem)) {
-				 	document.getElementById(thisAudio).pause();
-				 	document.getElementById(thisAudio).currentTime = 0;
-				}
-				else {
-					document.getElementById(thisAudio).play();
-				}		 
+ // try loading click event listener in the function called by bookmarklet (div7 not loaded below)
+  $(".string").click (function () {
+ 	thisString = $(this).attr("id");
+ 	thisAudio = 'Audio_' + thisString;
+ 	thisStringElem = document.getElementById(thisAudio);
+
+ 	if (isPlaying(thisStringElem)) {
+     	document.getElementById(thisAudio).pause();
+     	document.getElementById(thisAudio).currentTime = 0;
+    }
+    else {
+    	document.getElementById(thisAudio).play();
+    }		 
+}); 	
+
+function isPlaying(thisStringElem) { 
+    return !thisStringElem.paused; 
+}; 	
+
 				
 			
 			
@@ -52,17 +59,11 @@ console.log(window.jQuery.fn.jquery);
 	  var div7 = '<script type="text/javascript">$(document).ready()(function(){$(".string").click(function(){thisString=$(this).attr("id");thisAudio=\'Audio_\' + thisString;thisStringElem=document.getElementById(thisAudio);if(isPlaying(thisStringElem){document.getElementById(thisAudio).pause();document.getElementById(thisAudio).currentTime=0;}else{document.getElementById(thisAudio).play();}console.log("was clicked");});function isPlaying(thisStringElem){return !thisStringElem.paused;}});</script>';
 	  var div8 = '</div>'; 
 	  
-	  containerDiv.innerHTML = div1 + div2 + div3 + div4 + div5E + div5A + div5D + div5G + div5B + div51 + div6 +  div8;
+	  containerDiv.innerHTML = div1 + div2 + div3 + div4 + div5E + div5A + div5D + div5G + div5B + div51 + div6 + div8;
 	  document.body.appendChild(containerDiv);
   
-  console.log($('#Audio_1').attr('src'));
-  console.log($('#E').html());
- 
-  
   }
-  function isPlaying(thisStringElem) { 
-				return !thisStringElem.paused; 
-			};
+  
 
 }());
 	
