@@ -35,7 +35,7 @@ if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
 	  var div7 = '<script type="text/javascript">$(document).ready()(function(){$(".string").click(function(){thisString=$(this).attr("id");thisAudio=\'Audio_\' + thisString;thisStringElem=document.getElementById(thisAudio);if(isPlaying(thisStringElem){document.getElementById(thisAudio).pause();document.getElementById(thisAudio).currentTime=0;}else{document.getElementById(thisAudio).play();}console.log("was clicked");});function isPlaying(thisStringElem){return !thisStringElem.paused;}});</script>';
 	  var div8 = '</div>'; 
 	  
-	  containerDiv.innerHTML = div1 + div2 + div3 + div4 + div5E + div5A + div5D + div5G + div5B + div51 + div6 + div7 + div8;
+	  containerDiv.innerHTML = div7 + div1 + div2 + div3 + div4 + div5E + div5A + div5D + div5G + div5B + div51 + div6 +  div8;
 	  document.body.appendChild(containerDiv);
   
   }
