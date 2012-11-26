@@ -1,5 +1,5 @@
 (function(){
-
+console.log("page started loading");
 //check for jQuery v.1.6.3 or later. If not here, load it.
 var v = '1.6.3';
 
