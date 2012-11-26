@@ -33,9 +33,7 @@ console.log(window.jQuery.fn.jquery);
 				}		 
 				
 			
-			function isPlaying(thisStringElem) { 
-				return !thisStringElem.paused; 
-			};
+			
 
   // Append divs to body and load tuner. 
   function initGetInTune() {
@@ -59,8 +57,12 @@ console.log(window.jQuery.fn.jquery);
   
   console.log($('#Audio_1').attr('src'));
   console.log($('#E').html());
+ 
   
   }
+  function isPlaying(thisStringElem) { 
+				return !thisStringElem.paused; 
+			};
 
 }());
 	
