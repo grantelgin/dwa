@@ -40,7 +40,7 @@ console.log(window.jQuery.fn.jquery);
 	  containerDiv.innerHTML = div7 + div1 + div2 + div3 + div4 + div5E + div5A + div5D + div5G + div5B + div51 + div6 +  div8;
 	  document.body.appendChild(containerDiv);
   
-  console.log($('#Audio_1').src());
+  console.log($('#Audio_1').attr('src'));
   console.log($('#E').html());
   
   }
