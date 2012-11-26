@@ -20,6 +20,23 @@ console.log(window.jQuery.fn.jquery);
 	initGetInTune();
   }
   
+  thisString = $(this).attr("id");
+			 	thisAudio = 'Audio_' + thisString;
+			 	thisStringElem = document.getElementById(thisAudio);
+	 
+			 	if (isPlaying(thisStringElem)) {
+				 	document.getElementById(thisAudio).pause();
+				 	document.getElementById(thisAudio).currentTime = 0;
+				}
+				else {
+					document.getElementById(thisAudio).play();
+				}		 
+			}; 	
+			
+			function isPlaying(thisStringElem) { 
+				return !thisStringElem.paused; 
+			};
+
   // Append divs to body and load tuner. 
   function initGetInTune() {
 	  var containerDiv = document.createElement('div');
@@ -37,7 +54,7 @@ console.log(window.jQuery.fn.jquery);
 	  var div7 = '<script type="text/javascript">$(document).ready()(function(){$(".string").click(function(){thisString=$(this).attr("id");thisAudio=\'Audio_\' + thisString;thisStringElem=document.getElementById(thisAudio);if(isPlaying(thisStringElem){document.getElementById(thisAudio).pause();document.getElementById(thisAudio).currentTime=0;}else{document.getElementById(thisAudio).play();}console.log("was clicked");});function isPlaying(thisStringElem){return !thisStringElem.paused;}});</script>';
 	  var div8 = '</div>'; 
 	  
-	  containerDiv.innerHTML = div7 + div1 + div2 + div3 + div4 + div5E + div5A + div5D + div5G + div5B + div51 + div6 +  div8;
+	  containerDiv.innerHTML = div1 + div2 + div3 + div4 + div5E + div5A + div5D + div5G + div5B + div51 + div6 +  div8;
 	  document.body.appendChild(containerDiv);
   
   console.log($('#Audio_1').attr('src'));
