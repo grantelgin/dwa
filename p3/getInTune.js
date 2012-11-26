@@ -31,7 +31,7 @@ console.log(window.jQuery.fn.jquery);
 				else {
 					document.getElementById(thisAudio).play();
 				}		 
-			}; 	
+				
 			
 			function isPlaying(thisStringElem) { 
 				return !thisStringElem.paused; 
