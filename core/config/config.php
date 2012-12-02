@@ -43,9 +43,9 @@
 	if(!defined('PLACE_HOLDER_IMAGE')) define('PLACE_HOLDER_IMAGE', "/core/images/placeholder.png");
 
 # Default app settings
-	if(!defined('APP_EMAIL')) define('APP_EMAIL', 'webmaster@myapp.com'); # Should match domain name to avoid hitting the spam box
-	if(!defined('APP_NAME')) define('APP_NAME', 'My APp'); # Should match domain name to avoid hitting the spam box
-	if(!defined('SYSTEM_EMAIL')) define('SYSTEM_EMAIL', 'webmaster@myapp.com'); 
+	if(!defined('APP_EMAIL')) define('APP_EMAIL', 'webmaster@grantelgin.com'); # Should match domain name to avoid hitting the spam box
+	if(!defined('APP_NAME')) define('APP_NAME', 'p4.grantelgin.com'); # Should match domain name to avoid hitting the spam box
+	if(!defined('SYSTEM_EMAIL')) define('SYSTEM_EMAIL', 'webmaster@grantelgin.com'); 
 
 # Whether or not to send outgoing emails - default to off. Set in environment.php to turn on.
 	if(!defined('ENABLE_OUTGOING_EMAIL')) define('ENABLE_OUTGOING_EMAIL', FALSE);
