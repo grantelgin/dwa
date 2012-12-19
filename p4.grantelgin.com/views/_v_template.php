@@ -16,7 +16,7 @@
 
 <body>	
 
-	<div id="Menu_ProfileItems">
+	<div id="Menu_ProfileItems" style="margin:auto;">
 		<div style="float:left; margin-right:10px; text-align:center;">Location<br><img src="../images/location.png" alt="location" height="60"></div>
 		<div style="float:left; margin-right:10px; text-align:center;">Property<br><img src="../images/property.png" alt="property" height="60"></div>
 		<div style="float:left; margin-right:10px; text-align:center;">Auto<br><img src="../images/auto.png" alt="auto" height="60"></div>
@@ -28,8 +28,10 @@
 		
 	</div>
 
-
+<div>
 	<?=$content;?> 
+</div>
+	<div id="DIV_profile_id" style="display:none;"></div>
 
 </body>
 </html>

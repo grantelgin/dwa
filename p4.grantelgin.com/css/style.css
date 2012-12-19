@@ -160,5 +160,11 @@ h2 {
 p { font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 16px;
 	color: black;
-	width:1043px;
+	
   }
+  
+.profileContainer { border:2px solid #003be9; padding:30px; border-radius: 7px; -moz-border-radius: 7px; -webkit-border-radius: 7px; width:400px; }
+
+.btn {background-color: #ff9200; color:white; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; font-weight:bold; font-size: 24px; font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;  }
+
+.btn:hover {background-color: #f77e04;}
