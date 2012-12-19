@@ -1,7 +1,7 @@
-<div class="loginContainer">
+<div class="profileContainer">
 
 
-<form method='POST' action='/users/p_login' style="width:300px; margin:auto;">
+<form method='POST' action='/users/p_login' style="width:300px;">
 
 	
 	<input type='text' name='email' placeholder="email" style="width:100%; height:40px; margin:0px; padding:0px;">

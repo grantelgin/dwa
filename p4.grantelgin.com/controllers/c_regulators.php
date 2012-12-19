@@ -57,8 +57,8 @@ class regulators_controller extends base_controller {
 		$this->template->content->regulators    = $regulators;
 		$this->template->content->users  = $users;
 		
-	echo Debug::dump($regulators, "regulator_id");
-	echo Debug::dump($users, "user_id");
+	#echo Debug::dump($regulators, "regulator_id");
+	#echo Debug::dump($users, "user_id");
 	
 		# Render the view
 		echo $this->template;

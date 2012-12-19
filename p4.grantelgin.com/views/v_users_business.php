@@ -5,12 +5,14 @@
 		<input type="submit" value="Yes" class="btn" name="hasBiz" style="width:120px; height:40px; margin:0px; padding-left:5px; float:left;" >
 	
 		<input type="submit" value="No" class="btn" name="hasBizLic" title="No" style="width:120px; height:40px; margin:0px; padding-left:5px; float:left;" >	
-		
+		<div style="clear:both;">&nbsp;</div>
 		
 </form>
-<div style="clear:both;">&nbsp;</div>
+
 
 </div>
+
+
 
 <div id='results'></div>
 

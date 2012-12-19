@@ -16,18 +16,15 @@
 
 <body>	
 
-	<div id="Menu_ProfileItems" style="margin:auto;">
-		<div style="float:left; margin-right:10px; text-align:center;">Location<br><img src="../images/location.png" alt="location" height="60"></div>
-		<div style="float:left; margin-right:10px; text-align:center;">Property<br><img src="../images/property.png" alt="property" height="60"></div>
-		<div style="float:left; margin-right:10px; text-align:center;">Auto<br><img src="../images/auto.png" alt="auto" height="60"></div>
-		<div style="float:left; margin-right:10px; text-align:center;">Business<br><img src="../images/business.png" alt="business" height="60"></div>
-		<div style="float:left; margin-right:10px; text-align:center;">Licenses<br><img src="../images/licenses.png" alt="licenses" height="60"></div>
-		
-		
-		<div style="clear:both;"></div>
+	<div id="Menu_ProfileItems">
+		<a href="/users/location/"><div style="float:left; margin-right:10px; text-align:center;">Location<br><img src="../../images/location.png" alt="location" height="60"></div></a>
+		<a href="/users/property/"><div style="float:left; margin-right:10px; text-align:center;">Property<br><img src="../../images/property.png" alt="property" height="60"></div></a>
+		<a href="/users/auto/"><div style="float:left; margin-right:10px; text-align:center;">Auto<br><img src="../../images/auto.png" alt="auto" height="60"></div></a>
+		<a href="/users/business/"><div style="float:left; margin-right:10px; text-align:center;">Business<br><img src="../../images/business.png" alt="business" height="60"></div></a>
+		<a href="/users/bizlic/"><div style="float:left; margin-right:10px; text-align:center;">Licenses<br><img src="../../images/licenses.png" alt="licenses" height="60"></div></a>
 		
 	</div>
-
+<div style="clear:both;"></div>
 <div>
 	<?=$content;?> 
 </div>

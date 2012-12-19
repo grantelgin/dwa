@@ -15,7 +15,7 @@
 		<input type="text" name="work_st" placeholder="state" style="width:50px; height:40px; margin:0px 0px 0px 20px; padding-left:5px; float:left;" >
 	
 		<div style="width:100%; height:40px; margin:0px;">
-			<div class="formDesc" style="float:right;">
+			<div class="formDesc" style="float:right; padding-top:15px;">
 			<input type="submit" value="Continue" name="Sign up" class="btn" >
 			<br><br>
 			</div>

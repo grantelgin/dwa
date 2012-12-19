@@ -4,36 +4,30 @@
 			
 	<div>
 		<? foreach($complianceItems as $ci): ?>
-		<div class="post">
+		<div class="post" style="width:600px;">
 		<!-- Print this user's name -->
-		<h2>
-	<?=$ci['ciName']?>
-	
-</h2>
-<h2>
+		<div style="float:left;">
+		<img src="../images/<?=$ci['regulatorLogo']?>.png" alt="logo_1" width="60" />
+</div>
+<div style="float:left;">
+<p>
+	<?=$ci['ciName']?><br/>
 	<?=$ci['ciDesc']?>
-	
-</h2>
-
-		<img src="../images/<?=$ci['regulatorLogo']?>.png" alt="logo_1" width="100" />
-		<h2><a href="/users/profile/<?=$ci['regulator_id']?>"><?=$ci['regulatorName']?></a>  
+</p>
+</div>
+<div style="float:right;">
+		<p><a href="/regulators/profile/<?=$ci['regulator_id']?>"><?=$ci['regulatorName']?></a><br/>  
 			<span class="trade"><?=$ci['regulatorWww']?></span></span>
-		</h2>
-		<h2>
-			<?=$ci['regulatorPhone']?>
-		</h2>
-		<h2>
-			<?=$ci['regulatorAddDesc']?>
-		</h2>
-		<h2>
-			<?=$ci['regulatorStreet1']?>
-		</h2>
-		<h2>
-			<?=$ci['regulatorStreet2']?>
-		</h2>
+		</p>
+		<p>
+			<?=$ci['regulatorPhone']?><br/>
+			<?=$ci['regulatorAddDesc']?><br/>
+			<?=$ci['regulatorStreet1']?><br/>
+			<?=$ci['regulatorStreet2']?><br/>
+		</p>
 		
-
-
+</div>
+<div style="clear:both;">&nbsp;</div>
 		
 		<!-- If there exists a connection with this user, show a unfollow link -->
 				<br>

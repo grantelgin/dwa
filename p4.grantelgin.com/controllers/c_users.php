@@ -69,6 +69,12 @@ class users_controller extends base_controller {
 		$this->template->content = View::instance("v_users_login");
 		$this->template->title = "Login";
 		
+		$client_files = Array(
+				"/css/style.css",
+	            );
+	
+        $this->template->client_files = Utils::load_client_files($client_files);
+		
 		echo $this->template;
 	}
 	
@@ -264,6 +270,12 @@ if (isset($_POST['hasDriversLic']))
 		$this->template->content = View::instance("v_users_business");
 		$this->template->title = "business";
 		
+		$client_files = Array(
+				"/css/style.css",
+	            );
+	
+        $this->template->client_files = Utils::load_client_files($client_files);
+		
 		echo $this->template;
 
 	}
@@ -280,7 +292,7 @@ if (isset($_POST['hasDriversLic']))
 		
 		
 		DB::instance(DB_NAME)->update("users", $_POST, "WHERE user_id = ".$user_id);
-		Router::redirect("/users/bizlic");
+		Router::redirect("/regulators/items");
 		#print_r('what');
 		#print_r($this->profile_id);
 		#echo Debug::dump($_POST, "profile_id");
@@ -292,6 +304,12 @@ if (isset($_POST['hasDriversLic']))
 		# Set up the view
 		$this->template->content = View::instance("v_users_bizlic");
 		$this->template->title = "license";
+		
+		$client_files = Array(
+				"/css/style.css",
+	            );
+	
+        $this->template->client_files = Utils::load_client_files($client_files);
 		
 		echo $this->template;
 
