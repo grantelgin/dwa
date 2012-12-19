@@ -92,8 +92,14 @@ public function profile($regulator_id = null)
 		# Execute our query, storing the results in a variable $postContent
 		$regulatorsProfile = DB::instance(DB_NAME)->select_rows($q);
 		
+		$q = "SELECT * FROM complianceItems WHERE regulator_id = ".$regulator_id;
+		
+		# Execute our query, storing the results in a variable $postContent
+		$complianceItems = DB::instance(DB_NAME)->select_rows($q);
+		
 		# Pass data to the view
 		$this->template->content->regulatorsProfile = $regulatorsProfile;
+		$this->template->content->complianceItems = $complianceItems;
 		
 		# repeat the Build, Execute, Pass sequence to create a 2nd object accessible from the view.
 		#$q = "SELECT first_name, last_name 

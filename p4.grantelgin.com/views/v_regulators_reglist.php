@@ -6,6 +6,7 @@
 		<? foreach($regulators as $regulator): ?>
 		<div class="post">
 		<!-- Print this user's name -->
+		<img src="../images/<?=$regulator['regulatorLogo']?>.png" alt="logo_1" width="100" />
 		<h2><a href="/regulators/profile/<?=$regulator['regulator_id']?>"><?=$regulator['regulatorName']?></a>  
 			<span class="trade"><?=$regulator['regulatorWww']?></span></span>
 		</h2>
