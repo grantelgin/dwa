@@ -122,6 +122,60 @@ public function profile($regulator_id = null)
 		echo $this->template;	
 	}
 
+public function items()
+	{
+		
+		# Setup view
+		$this->template->content = View::instance('v_regulators_items');
+		
+				# Load CSS / JS
+		$client_files = Array(
+				"/css/style.css",
+				
+	            );
+	
+        $this->template->client_files = Utils::load_client_files($client_files);
+			
+		# Build a query of this regulators info
+		#$q = "SELECT *
+		#FROM users
+		#WHERE user_id = ".$user_id;
+			
+		# Execute our query, storing the results in a variable $postContent
+		#$user = DB::instance(DB_NAME)->select_rows($q);
+		
+		$q = "SELECT *
+			FROM regulators r
+			LEFT JOIN complianceItems c ON r.regulator_id = c.regulator_id";
+	
+		# Execute the query to get all the users. Store the result array in the variable $users
+		$complianceItems = DB::instance(DB_NAME)->select_rows($q);
+				
+		# Pass data to the view
+		$this->template->content->complianceItems = $complianceItems;
+		#$this->template->content->user = $user;
+		
+		# repeat the Build, Execute, Pass sequence to create a 2nd object accessible from the view.
+		#$q = "SELECT first_name, last_name 
+		#FROM users WHERE user_id = ".$user_id;
+		
+		#$userName = DB::instance(DB_NAME)->select_rows($q); 
+		
+		#$this->template->content->userName = $userName;
+		
+		# repeat the Build, Execute, Pass sequence to create a 3rd object accessible from the view. This will be for the user's trade. 
+		#$q = "SELECT trade FROM trades WHERE user_id = ".$user_id;
+		
+		#$trades = DB::instance(DB_NAME)->select_rows($q); 
+		
+		#$this->template->content->trades = $trades;
+		
+		#this is a better layout than print_r(data) for debugging
+		#echo Debug::dump($userName, "user_id");
+		# Render view
+		echo $this->template;	
+	}
+
 		
 	
 }
