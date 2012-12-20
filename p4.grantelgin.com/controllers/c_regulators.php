@@ -22,7 +22,7 @@ class regulators_controller extends base_controller {
 		# Load CSS / JS
 		$client_files = Array(
 				"/css/style.css",
-				
+				"/js/regulators.js",
 	            );
 	
         $this->template->client_files = Utils::load_client_files($client_files);
@@ -37,40 +37,20 @@ class regulators_controller extends base_controller {
 			FROM regulators r
 			LEFT JOIN regulatorCities c ON r.regulator_id = c.regulator_id";
 	
-		# Execute the query to get all the users. Store the result array in the variable $users
+		# Execute the query to get all the regulators. Store the result array in the variable $regulators
 		$regulators = DB::instance(DB_NAME)->select_rows($q);
-		
-		
-		
-		# Build our query to figure out what connections does this user already have? I.e. who are they following
-		#$q = "SELECT * 
-		#	FROM users_users
-		#	WHERE user_id = ".$this->user->user_id;
-			
-		# Execute this query with the select_array method
-		# select_array will return our results in an array and use the "users_id_followed" field as the index.
-		# This will come in handy when we get to the view
-		# Store our results (an array) in the variable $connections
-		#$connections = DB::instance(DB_NAME)->select_array($q, 'user_id_followed');
-				
-		# Pass data (users and connections) to the view
-		$this->template->content->regulators    = $regulators;
-		$this->template->content->users  = $users;
-		
-	#echo Debug::dump($regulators, "regulator_id");
-	#echo Debug::dump($users, "user_id");
 	
+				
+		# Pass data (users and regulators) to the view
+		$this->template->content->regulators = $regulators;
+		$this->template->content->users      = $users;
+			
 		# Render the view
 		echo $this->template;
 	}
 	
-	public function p_profile()
-	{
-		
-		
-	}
 
-public function profile($regulator_id = null)
+	public function profile($regulator_id = null)
 	{
 		
 		# Setup view
@@ -79,50 +59,41 @@ public function profile($regulator_id = null)
 				# Load CSS / JS
 		$client_files = Array(
 				"/css/style.css",
-				
+				"/js/regulators.js",
 	            );
 	
         $this->template->client_files = Utils::load_client_files($client_files);
 			
 		# Build a query of this regulators info
 		$q = "SELECT *
-		FROM regulators
+		FROM regulators r
 		WHERE regulator_id = ".$regulator_id;
 			
-		# Execute our query, storing the results in a variable $postContent
+		# Execute our query, storing the results in a variable 
 		$regulatorsProfile = DB::instance(DB_NAME)->select_rows($q);
 		
 		$q = "SELECT * FROM complianceItems WHERE regulator_id = ".$regulator_id;
 		
-		# Execute our query, storing the results in a variable $postContent
+		# Execute our query, storing the results in a variable 
 		$complianceItems = DB::instance(DB_NAME)->select_rows($q);
+		
+		$q = "SELECT *
+		FROM regulators r
+		LEFT JOIN cities c ON r.regulatorCityId = c.city_id";
+		
+		# Execute our query, storing the results in a variable 
+		$cities = DB::instance(DB_NAME)->select_rows($q);
 		
 		# Pass data to the view
 		$this->template->content->regulatorsProfile = $regulatorsProfile;
 		$this->template->content->complianceItems = $complianceItems;
+		$this->template->content->cities = $cities;
 		
-		# repeat the Build, Execute, Pass sequence to create a 2nd object accessible from the view.
-		#$q = "SELECT first_name, last_name 
-		#FROM users WHERE user_id = ".$user_id;
-		
-		#$userName = DB::instance(DB_NAME)->select_rows($q); 
-		
-		#$this->template->content->userName = $userName;
-		
-		# repeat the Build, Execute, Pass sequence to create a 3rd object accessible from the view. This will be for the user's trade. 
-		#$q = "SELECT trade FROM trades WHERE user_id = ".$user_id;
-		
-		#$trades = DB::instance(DB_NAME)->select_rows($q); 
-		
-		#$this->template->content->trades = $trades;
-		
-		#this is a better layout than print_r(data) for debugging
-		#echo Debug::dump($userName, "user_id");
 		# Render view
 		echo $this->template;	
 	}
 
-public function items()
+	public function items()
 	{
 		
 		# Setup view
@@ -131,19 +102,11 @@ public function items()
 				# Load CSS / JS
 		$client_files = Array(
 				"/css/style.css",
-				
+				"/js/regulators.js",
 	            );
 	
         $this->template->client_files = Utils::load_client_files($client_files);
-			
-		# Build a query of this regulators info
-		#$q = "SELECT *
-		#FROM users
-		#WHERE user_id = ".$user_id;
-			
-		# Execute our query, storing the results in a variable $postContent
-		#$user = DB::instance(DB_NAME)->select_rows($q);
-		
+					
 		$q = "SELECT *
 			FROM regulators r
 			LEFT JOIN complianceItems c ON r.regulator_id = c.regulator_id";
@@ -153,25 +116,7 @@ public function items()
 				
 		# Pass data to the view
 		$this->template->content->complianceItems = $complianceItems;
-		#$this->template->content->user = $user;
 		
-		# repeat the Build, Execute, Pass sequence to create a 2nd object accessible from the view.
-		#$q = "SELECT first_name, last_name 
-		#FROM users WHERE user_id = ".$user_id;
-		
-		#$userName = DB::instance(DB_NAME)->select_rows($q); 
-		
-		#$this->template->content->userName = $userName;
-		
-		# repeat the Build, Execute, Pass sequence to create a 3rd object accessible from the view. This will be for the user's trade. 
-		#$q = "SELECT trade FROM trades WHERE user_id = ".$user_id;
-		
-		#$trades = DB::instance(DB_NAME)->select_rows($q); 
-		
-		#$this->template->content->trades = $trades;
-		
-		#this is a better layout than print_r(data) for debugging
-		#echo Debug::dump($userName, "user_id");
 		# Render view
 		echo $this->template;	
 	}

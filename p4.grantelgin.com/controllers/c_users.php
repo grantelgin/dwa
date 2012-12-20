@@ -23,6 +23,8 @@ class users_controller extends base_controller {
 		# Load CSS / JS
 		$client_files = Array(
 				"/css/style.css",
+				"/js/signup.js",
+				"/js/jquery.form.js",
 	            );
 	
         $this->template->client_files = Utils::load_client_files($client_files);
@@ -43,25 +45,23 @@ class users_controller extends base_controller {
 		$userPost['password']   = $_POST['password'];
 		$userPost['created']    = $_POST['created'];
 		$userPost['modified']   = $_POST['modified'];
-		$userPost['token']      = $_POST['token']; 
-		$userPost['email']      = $_POST['email']; 
-		$userPost['first_name'] = $_POST['first_name']; 
-		$userPost['last_name']  = $_POST['last_name']; 
+		$userPost['token']      = $_POST['token'];
 		
-		# insert this user in to the databse
-		$user_id = DB::instance(DB_NAME)->insert("users", $userPost);
+		#verify text fields are not empty
+		if ($_POST['email'] != '' || $_POST['first_name'] != '' || $_POST['last_name'] != '')
+		 {
+			 $userPost['email']      = $_POST['email']; 
+			 $userPost['first_name'] = $_POST['first_name']; 
+			 $userPost['last_name']  = $_POST['last_name']; 
+			
+			 # insert this user in to the databse
+			 $user_id = DB::instance(DB_NAME)->insert("users", $userPost);
 		
-		#Insert data in to the trades table after the users table item has been created
-		#$art['trade'] = $_POST['art'];
-		#$art['user_id'] = $user_id;
-		#$trade = DB::instance(DB_NAME)->insert("trades", $art);
+			 Router::redirect("/users/login");
+		 }
+		else
+		echo "Please complete the form";
 		
-		#$connection['user_id'] = $user_id;
-		#$connection['user_id_followed'] = $user_id;
-		#$connection['created'] = $_POST['created'];
-		#$connection1 = DB::instance(DB_NAME)->insert("users_users", $connection);
-		
-		Router::redirect("/users/login");
 	}	
 	
 	public function login()
@@ -71,6 +71,7 @@ class users_controller extends base_controller {
 		
 		$client_files = Array(
 				"/css/style.css",
+	            "/js/signup.js",
 	            );
 	
         $this->template->client_files = Utils::load_client_files($client_files);
@@ -80,37 +81,42 @@ class users_controller extends base_controller {
 	
 	public function p_login() 
 	{
-		# Sanitize the user entered data to prevent any funny-business (re: SQL Injection Attacks)
-		$_POST = DB::instance(DB_NAME)->sanitize($_POST);
+		if ($_POST['email'] != '') {
+			# Sanitize the user entered data to prevent any funny-business (re: SQL Injection Attacks)
+			$_POST = DB::instance(DB_NAME)->sanitize($_POST);
 	
-		# Hash submitted password so we can compare it against one in the db
-		$_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
+			# Hash submitted password so we can compare it against one in the db
+			$_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
 	
-		# Search the db for this email and password
-		# Retrieve the token if it's available
-		$q = "SELECT token 
-			FROM users 
-			WHERE email = '".$_POST['email']."' 
-			AND password = '".$_POST['password']."'";
+			# Search the db for this email and password
+			# Retrieve the token if it's available
+			$q = "SELECT token 
+				FROM users 
+				WHERE email = '".$_POST['email']."' 
+				AND password = '".$_POST['password']."'";
 	
-		$token = DB::instance(DB_NAME)->select_field($q);	
+				$token = DB::instance(DB_NAME)->select_field($q);	
 				
-		# If we didn't get a token back, login failed
-		if(!$token) 
-		{	
-			# Send them back to the login page
-			Router::redirect("/users/location/");
+				# If we didn't get a token back, login failed
+				if(!$token) 
+				{	
+					# Send them back to the login page
+					Router::redirect("/users/location/");
 		
-			# But if we did, login succeeded! 
-		} 
-		else
-		 {	
-			 # Store this token in a cookie
-			 setcookie("token", $token, strtotime('+1 year'), '/');
+					# But if we did, login succeeded! 
+				} 
+				else
+				{	
+					# Store this token in a cookie
+					setcookie("token", $token, strtotime('+1 year'), '/');
 		
-			 # Send them to the main page - or whever you want them to go
-			 Router::redirect("/users/location");			
+					# Send them to the main page - or whever you want them to go
+					Router::redirect("/users/location");			
+				}
 		}
+		else 
+			echo "Please try again";
+
 	}
 
 	
@@ -133,7 +139,7 @@ class users_controller extends base_controller {
 		echo $this->template;
 
 	}
-	#TODO - establish profile_id on location, update that record on property, auto, etc.
+	
 	
 	public function p_location ()
 	{
@@ -158,20 +164,15 @@ class users_controller extends base_controller {
 		
 		$locPost['workCity_id'] = DB::instance(DB_NAME)->select_field($q);
 		
-		#$data = Array("hasAutomobile" => "1");
+	
 		DB::instance(DB_NAME)->update("users", $locPost, "WHERE user_id = ".$this->user->user_id);
-		#$user_id = DB::instance(DB_NAME)->insert("users", $locPost);
 		
-		#$profile_id = $user_id;
-		#print_r($this->profile_id);
-		#echo Debug::dump($_POST, "profile_id");
 		Router::redirect("/users/property");
 		
 	}
 	
 	public function property()
 	{
-		#$user_id = $this->user->user_id;
 		# Set up the view
 		$this->template->content = View::instance("v_users_property");
 		$this->template->title = "prop";
@@ -187,9 +188,6 @@ class users_controller extends base_controller {
 
 		
 		echo $this->template;
-		#echo "User id is".$user_id;
-		#print_r($user_id);
-		
 	}
 	
 	public function p_ownsProperty()
@@ -201,9 +199,7 @@ class users_controller extends base_controller {
 		
 		DB::instance(DB_NAME)->update("users", $_POST, "WHERE user_id = ".$user_id);
 		Router::redirect("/users/auto");
-		#print_r('what');
-		#print_r($this->profile_id);
-		#echo Debug::dump($_POST, "profile_id");
+		
 	}
 	
 	public function p_rentsProperty()
@@ -215,9 +211,7 @@ class users_controller extends base_controller {
 		
 		DB::instance(DB_NAME)->update("users", $_POST, "WHERE user_id = ".$user_id);
 		Router::redirect("/users/auto");
-		#print_r('what');
-		#print_r($this->profile_id);
-		#echo Debug::dump($_POST, "profile_id");
+		
 	}
 
 	
@@ -230,7 +224,6 @@ class users_controller extends base_controller {
 		
 		# Load CSS / JS
 		$client_files = Array(
-				
 				"/js/jquery.form.js",
 				"/css/style.css",
 	            );
@@ -245,22 +238,18 @@ class users_controller extends base_controller {
 	public function p_Auto()
 	{
 		$user_id = $this->user->user_id;
-if (isset($_POST['hasAutomobile']))    
-{    
+		if (isset($_POST['hasAutomobile']))    
+		{    
           $auto['hasAutomobile'] = '1'; 
-}    
-if (isset($_POST['hasDriversLic']))    
-{    
+        }    
+        if (isset($_POST['hasDriversLic']))    
+        {    
           $auto['hasDriversLic'] = '1'; 
-}    
-		
-		
+        }    
 		
 		DB::instance(DB_NAME)->update("users", $auto, "WHERE user_id = ".$user_id);
 		Router::redirect("/users/business");
-		#print_r('what');
-		#print_r($this->profile_id);
-		#echo Debug::dump($_POST, "profile_id");
+		
 	}
 
 
@@ -285,17 +274,13 @@ if (isset($_POST['hasDriversLic']))
 		$user_id = $this->user->user_id;
 
 		if (isset($_POST['hasBiz']))    
-{    
+		{    
           $biz['hasBiz'] = '1'; 
-}    
- 
-		
+        }    
 		
 		DB::instance(DB_NAME)->update("users", $_POST, "WHERE user_id = ".$user_id);
 		Router::redirect("/regulators/items");
-		#print_r('what');
-		#print_r($this->profile_id);
-		#echo Debug::dump($_POST, "profile_id");
+		
 	}
 
 	
@@ -319,14 +304,9 @@ if (isset($_POST['hasDriversLic']))
 	{
 		$user_id = $this->user->user_id;
 
-		
-		
-		
 		DB::instance(DB_NAME)->update("users", $_POST, "WHERE user_id = ".$user_id);
 		Router::redirect("/users/auto");
-		#print_r('what');
-		#print_r($this->profile_id);
-		#echo Debug::dump($_POST, "profile_id");
+		
 	}
 
 

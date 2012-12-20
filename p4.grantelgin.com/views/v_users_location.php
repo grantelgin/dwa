@@ -1,4 +1,5 @@
 <div class="profileContainer">
+<div class="up-arrow" style="margin-top:-50px; margin-left:-17px;"></div>
 	<form method="POST" action='/users/p_location' style="margin:auto;padding-left:20px; padding-top:30px;">
 
 		<p>Where do you live?</p>

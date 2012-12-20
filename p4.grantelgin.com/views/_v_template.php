@@ -17,18 +17,22 @@
 <body>	
 
 	<div id="Menu_ProfileItems">
-		<a href="/users/location/"><div style="float:left; margin-right:10px; text-align:center;">Location<br><img src="../../images/location.png" alt="location" height="60"></div></a>
-		<a href="/users/property/"><div style="float:left; margin-right:10px; text-align:center;">Property<br><img src="../../images/property.png" alt="property" height="60"></div></a>
-		<a href="/users/auto/"><div style="float:left; margin-right:10px; text-align:center;">Auto<br><img src="../../images/auto.png" alt="auto" height="60"></div></a>
-		<a href="/users/business/"><div style="float:left; margin-right:10px; text-align:center;">Business<br><img src="../../images/business.png" alt="business" height="60"></div></a>
-		<a href="/users/bizlic/"><div style="float:left; margin-right:10px; text-align:center;">Licenses<br><img src="../../images/licenses.png" alt="licenses" height="60"></div></a>
-		
+		<a href="/users/location"><div class="title" style="float:left; margin-right:10px; text-align:center;">Location<br><img src="../../images/location.png" alt="location" height="60"></div></a>
+		<a href="/users/property"><div class="title" style="float:left; margin-right:10px; text-align:center;">Property<br><img src="../../images/property.png" alt="property" height="60"></div></a>
+		<a href="/users/auto"><div class="title" style="float:left; margin-right:10px; text-align:center;">Auto<br><img src="../../images/auto.png" alt="auto" height="60"></div></a>
+		<a href="/users/business"><div class="title" style="float:left; margin-right:10px; text-align:center;">Business<br><img src="../../images/business.png" alt="business" height="60"></div></a>
+
 	</div>
-<div style="clear:both;"></div>
-<div>
-	<?=$content;?> 
-</div>
-	<div id="DIV_profile_id" style="display:none;"></div>
+	
+	<div id="Menu_regulatorItems" style="display:none;">
+		<a href="/regulators/reglist"><div class="title" style="float:left; margin-right:20px; text-align:center;">Regulatory<br>Organizations</div></a>
+		<a href="/regulators/items"><div class="title" style="float:left; margin-right:10px; text-align:center;">Compliance<br>Items</div></a>
+	</div>
+	<div style="clear:both;"></div>
+	<div style="margin-top:30px;">
+		<?=$content;?> 
+	</div>
+	
 
 </body>
 </html>
