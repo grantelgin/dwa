@@ -23,7 +23,7 @@
 
 # Routing
     Router::$routes = array(
-    	'/' => '/users/location',
+    	'/' => '/users/signup',
     	     # default controller when "/" is requested
     );
     
